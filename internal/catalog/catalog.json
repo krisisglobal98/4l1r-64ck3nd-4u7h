@@ -281,42 +281,6 @@
      ]
     },
     {
-     "id": "pm.customer",
-     "name": "Customer",
-     "description": "Pelanggan jasa pengiriman, alamat penagihan, dan termin pembayaran.",
-     "actions": [
-      "read",
-      "create",
-      "update",
-      "delete",
-      "own",
-      "submit",
-      "approve",
-      "reject",
-      "unapprove",
-      "export",
-      "upload"
-     ]
-    },
-    {
-     "id": "pm.vendor",
-     "name": "Vendor",
-     "description": "Pemasok jasa: pelayaran, trucking, depo, dan agen.",
-     "actions": [
-      "read",
-      "create",
-      "update",
-      "delete",
-      "own",
-      "submit",
-      "approve",
-      "reject",
-      "unapprove",
-      "export",
-      "upload"
-     ]
-    },
-    {
      "id": "pm.port",
      "name": "Pelabuhan",
      "description": "Pelabuhan muat dan bongkar dengan kode UN/LOCODE.",
@@ -594,6 +558,37 @@
      "id": "pm.bank",
      "name": "Bank",
      "description": "Bank untuk gaji, klaim, serta pembayaran customer dan vendor (kliring dan SWIFT).",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.businessPartner",
+     "name": "Mitra Bisnis",
+     "description": "Satu data per pihak: customer, vendor, shipper, consignee, agen, pelayaran, trucking, PPJK, dan gudang, dengan pajak, alamat, kontak, dan rekening.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.salesPerson",
+     "name": "Tenaga Penjualan",
+     "description": "Karyawan yang menangani customer, dengan unit penjualan dan komisinya.",
      "actions": [
       "read",
       "create",
@@ -1011,32 +1006,6 @@
      "export",
      "upload"
     ],
-    "pm.customer": [
-     "read",
-     "create",
-     "update",
-     "delete",
-     "own",
-     "submit",
-     "approve",
-     "reject",
-     "unapprove",
-     "export",
-     "upload"
-    ],
-    "pm.vendor": [
-     "read",
-     "create",
-     "update",
-     "delete",
-     "own",
-     "submit",
-     "approve",
-     "reject",
-     "unapprove",
-     "export",
-     "upload"
-    ],
     "pm.port": [
      "read",
      "create",
@@ -1207,6 +1176,27 @@
      "upload"
     ],
     "pm.bank": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.businessPartner": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "export",
+     "upload"
+    ],
+    "pm.salesPerson": [
      "read",
      "create",
      "update",
@@ -1431,14 +1421,6 @@
      "read",
      "export"
     ],
-    "pm.customer": [
-     "read",
-     "export"
-    ],
-    "pm.vendor": [
-     "read",
-     "export"
-    ],
     "pm.port": [
      "read",
      "export"
@@ -1524,6 +1506,14 @@
      "export"
     ],
     "pm.bank": [
+     "read",
+     "export"
+    ],
+    "pm.businessPartner": [
+     "read",
+     "export"
+    ],
+    "pm.salesPerson": [
      "read",
      "export"
     ],
@@ -1674,20 +1664,6 @@
      "read",
      "export"
     ],
-    "pm.customer": [
-     "read",
-     "approve",
-     "reject",
-     "unapprove",
-     "export"
-    ],
-    "pm.vendor": [
-     "read",
-     "approve",
-     "reject",
-     "unapprove",
-     "export"
-    ],
     "pm.port": [
      "read",
      "export"
@@ -1773,6 +1749,17 @@
      "export"
     ],
     "pm.bank": [
+     "read",
+     "export"
+    ],
+    "pm.businessPartner": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "export"
+    ],
+    "pm.salesPerson": [
      "read",
      "export"
     ],
@@ -1893,12 +1880,6 @@
     "pm.network": [
      "read"
     ],
-    "pm.customer": [
-     "read"
-    ],
-    "pm.vendor": [
-     "read"
-    ],
     "pm.port": [
      "read"
     ],
@@ -1963,6 +1944,12 @@
      "read"
     ],
     "pm.bank": [
+     "read"
+    ],
+    "pm.businessPartner": [
+     "read"
+    ],
+    "pm.salesPerson": [
      "read"
     ],
     "pm.country": [
@@ -2032,7 +2019,7 @@
   "ssoEnabled": false,
   "ssoIssuer": null,
   "ssoClientId": null,
-  "updatedAt": "2026-10-20T14:01:26.149Z",
+  "updatedAt": "2026-10-20T14:25:47.298Z",
   "updatedBy": "Administrator"
  }
 }
