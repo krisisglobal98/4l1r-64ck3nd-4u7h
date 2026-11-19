@@ -278,7 +278,9 @@ func TestMail(t *testing.T) {
 		smtp.mu.Unlock()
 		defer func() { smtp.mu.Lock(); smtp.fail = false; smtp.mu.Unlock() }()
 		must(t, newClient().do(t, "POST", "/auth/password/forgot", map[string]any{"username": "mail.budi"}), 200)
-		_, _ = worker.Once(context.Background())
+		if n, _ := worker.Once(context.Background()); n != 0 {
+			t.Errorf("a refused message counted as sent: %d", n)
+		}
 		var status string
 		var attempts int
 		var later bool

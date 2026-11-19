@@ -184,22 +184,24 @@ func (w Worker) Run(ctx context.Context) {
 	}
 }
 
-// Once sends the due messages (at most 20), each in its own claim: several instances never send one twice.
+// Once handles the due messages (at most 20), each in its own claim: several instances never send one twice. It
+// answers how many were actually sent (not those held, refused or left for a retry).
 func (w Worker) Once(ctx context.Context) (int, error) {
 	sent := 0
 	for range 20 {
-		done, err := w.one(ctx)
-		if err != nil || !done {
+		claimed, ok, err := w.one(ctx)
+		if err != nil || !claimed {
 			return sent, err
 		}
-		sent++
+		if ok {
+			sent++
+		}
 	}
 	return sent, nil
 }
 
-func (w Worker) one(ctx context.Context) (bool, error) {
-	var claimed bool
-	err := w.DB.InTx(ctx, func(ctx context.Context) error {
+func (w Worker) one(ctx context.Context) (claimed, sent bool, err error) {
+	err = w.DB.InTx(ctx, func(ctx context.Context) error {
 		var id, to, subject, body string
 		var attempts int
 		err := w.DB.Q(ctx).QueryRow(ctx, `SELECT id, to_address, subject, body_text, attempts FROM auth.mail_outbox
@@ -215,6 +217,7 @@ func (w Worker) one(ctx context.Context) (bool, error) {
 		}
 		sendErr := w.Sender.Send(ctx, Message{To: to, Subject: subject, Body: body})
 		if sendErr == nil {
+			sent = true
 			_, err = w.DB.Q(ctx).Exec(ctx, `UPDATE auth.mail_outbox SET status = 'sent', attempts = attempts + 1, sent_at = now(), last_error = NULL WHERE id = $1`, id)
 			return err
 		}
@@ -227,7 +230,7 @@ func (w Worker) one(ctx context.Context) (bool, error) {
 			id, truncate(sendErr.Error(), 500), backoff[attempts].Seconds())
 		return err
 	})
-	return claimed, err
+	return claimed, sent, err
 }
 
 func truncate(s string, n int) string {
