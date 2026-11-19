@@ -282,8 +282,34 @@
     },
     {
      "id": "pm.charge",
-     "name": "Jenis Biaya",
-     "description": "Kode biaya di Job Sheet dan Invoice, dengan tarif dasarnya.",
+     "name": "Kode Biaya",
+     "description": "Satu kode per jenis biaya untuk ditagihkan ke customer dan/atau dibayar ke vendor, dengan tarif dasar dan pajaknya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.exchangeRate",
+     "name": "Kurs",
+     "description": "Kurs mata uang per jenis (pajak, tengah BI, beli/jual bank, internal) dengan tanggal berlaku; riwayat tersimpan.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.companyBankAccount",
+     "name": "Rekening Bank Perusahaan",
+     "description": "Rekening milik perusahaan per unit, dengan keperluan dan rekening utama yang dicetak di invoice.",
      "actions": [
       "read",
       "create",
@@ -350,6 +376,19 @@
      "id": "pm.uom",
      "name": "Satuan",
      "description": "Satuan ukur muatan, stok, dan tarif dengan kode UN/ECE dan faktor ke satuan dasar.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.serviceType",
+     "name": "Moda & Layanan",
+     "description": "Layanan yang dijual (FCL, LCL, bulk, udara, trucking, kepabeanan, gudang) dengan moda dan jenis muatannya.",
      "actions": [
       "read",
       "create",
@@ -680,6 +719,19 @@
      "id": "pm.taxType",
      "name": "Jenis Pajak",
      "description": "PPN dan PPh dengan tarif dan dasar pengenaan per periode berlaku; tarif ditetapkan tim pajak.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.documentType",
+     "name": "Jenis Dokumen",
+     "description": "Dokumen pengiriman, pabean, komersial, dan sertifikat beserta penerbit dan aturannya.",
      "actions": [
       "read",
       "create",
@@ -1053,6 +1105,22 @@
      "export",
      "upload"
     ],
+    "pm.exchangeRate": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.companyBankAccount": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
     "pm.currency": [
      "read",
      "create",
@@ -1087,6 +1155,14 @@
      "upload"
     ],
     "pm.uom": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.serviceType": [
      "read",
      "create",
      "update",
@@ -1292,6 +1368,14 @@
      "upload"
     ],
     "pm.taxType": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.documentType": [
      "read",
      "create",
      "update",
@@ -1488,6 +1572,14 @@
      "read",
      "export"
     ],
+    "pm.exchangeRate": [
+     "read",
+     "export"
+    ],
+    "pm.companyBankAccount": [
+     "read",
+     "export"
+    ],
     "pm.currency": [
      "read",
      "export"
@@ -1505,6 +1597,10 @@
      "export"
     ],
     "pm.uom": [
+     "read",
+     "export"
+    ],
+    "pm.serviceType": [
      "read",
      "export"
     ],
@@ -1605,6 +1701,10 @@
      "export"
     ],
     "pm.taxType": [
+     "read",
+     "export"
+    ],
+    "pm.documentType": [
      "read",
      "export"
     ],
@@ -1743,6 +1843,14 @@
      "read",
      "export"
     ],
+    "pm.exchangeRate": [
+     "read",
+     "export"
+    ],
+    "pm.companyBankAccount": [
+     "read",
+     "export"
+    ],
     "pm.currency": [
      "read",
      "export"
@@ -1760,6 +1868,10 @@
      "export"
     ],
     "pm.uom": [
+     "read",
+     "export"
+    ],
+    "pm.serviceType": [
      "read",
      "export"
     ],
@@ -1863,6 +1975,10 @@
      "export"
     ],
     "pm.taxType": [
+     "read",
+     "export"
+    ],
+    "pm.documentType": [
      "read",
      "export"
     ],
@@ -1970,6 +2086,12 @@
     "pm.charge": [
      "read"
     ],
+    "pm.exchangeRate": [
+     "read"
+    ],
+    "pm.companyBankAccount": [
+     "read"
+    ],
     "pm.currency": [
      "read"
     ],
@@ -1983,6 +2105,9 @@
      "read"
     ],
     "pm.uom": [
+     "read"
+    ],
+    "pm.serviceType": [
      "read"
     ],
     "pm.commodity": [
@@ -2060,6 +2185,9 @@
     "pm.taxType": [
      "read"
     ],
+    "pm.documentType": [
+     "read"
+    ],
     "pm.numbering": [
      "read"
     ],
@@ -2115,7 +2243,7 @@
   "ssoEnabled": false,
   "ssoIssuer": null,
   "ssoClientId": null,
-  "updatedAt": "2026-10-20T14:41:33.680Z",
+  "updatedAt": "2026-10-20T14:52:36.657Z",
   "updatedBy": "Administrator"
  }
 }
