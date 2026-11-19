@@ -241,6 +241,12 @@ func (s *Service) Routes(mux *http.ServeMux) {
 
 	/* Identity providers of the company */
 	h("GET /auth/identity-providers", func(w http.ResponseWriter, r *http.Request) (any, int, error) { return ok(s.ListIdps(r.Context())) })
+	h("GET /auth/identity-providers-setup", func(w http.ResponseWriter, r *http.Request) (any, int, error) {
+		if _, err := Require(r.Context(), "auth.security", "read"); err != nil {
+			return nil, 0, err
+		}
+		return map[string]string{"redirectUri": s.idpRedirectURI()}, http.StatusOK, nil
+	})
 	h("POST /auth/identity-providers", func(w http.ResponseWriter, r *http.Request) (any, int, error) {
 		b, err := body(r)
 		if err != nil {

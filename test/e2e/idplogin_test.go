@@ -194,6 +194,12 @@ func TestIdpLogin(t *testing.T) {
 		if l := must(t, a.do(t, "GET", "/auth/identity-providers", nil), 200); l.List[0]["redirectUri"] != server.URL+"/auth/idp/callback" {
 			t.Errorf("redirect uri to register: %v", l.List[0]["redirectUri"])
 		}
+		if su := must(t, a.do(t, "GET", "/auth/identity-providers-setup", nil), 200); su.str("redirectUri") != server.URL+"/auth/idp/callback" {
+			t.Errorf("setup before any provider: %s", su.Raw)
+		}
+		if x := newClient().do(t, "GET", "/auth/identity-providers-setup", nil); x.Status != 401 {
+			t.Errorf("setup anonymous: %d", x.Status)
+		}
 	})
 
 	t.Run("IL02 a member signs in by the email the provider vouches for; later by the linked account", func(t *testing.T) {
