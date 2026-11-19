@@ -344,8 +344,8 @@
     },
     {
      "id": "pm.currency",
-     "name": "Mata Uang & Kurs",
-     "description": "Mata uang transaksi dan kurs tengah terhadap Rupiah.",
+     "name": "Mata Uang",
+     "description": "Mata uang transaksi dengan kode ISO 4217. Kurs dicatat di master Kurs.",
      "actions": [
       "read",
       "create",
@@ -593,7 +593,59 @@
     {
      "id": "pm.bank",
      "name": "Bank",
-     "description": "Bank tujuan transfer gaji dan klaim.",
+     "description": "Bank untuk gaji, klaim, serta pembayaran customer dan vendor (kliring dan SWIFT).",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.country",
+     "name": "Negara",
+     "description": "Negara dengan kode ISO 3166, kode telepon, dan mata uang default.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.city",
+     "name": "Kota",
+     "description": "Kota dan kabupaten per negara dan provinsi, untuk alamat mitra dan lokasi.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.paymentTerm",
+     "name": "Syarat Pembayaran",
+     "description": "Jatuh tempo tagihan: jumlah hari dari tanggal tertentu, uang muka, untuk customer atau vendor.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.taxType",
+     "name": "Jenis Pajak",
+     "description": "PPN dan PPh dengan tarif dan dasar pengenaan per periode berlaku; tarif ditetapkan tim pajak.",
      "actions": [
       "read",
       "create",
@@ -1162,6 +1214,38 @@
      "export",
      "upload"
     ],
+    "pm.country": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.city": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.paymentTerm": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.taxType": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
     "pm.numbering": [
      "read",
      "create",
@@ -1443,6 +1527,22 @@
      "read",
      "export"
     ],
+    "pm.country": [
+     "read",
+     "export"
+    ],
+    "pm.city": [
+     "read",
+     "export"
+    ],
+    "pm.paymentTerm": [
+     "read",
+     "export"
+    ],
+    "pm.taxType": [
+     "read",
+     "export"
+    ],
     "pm.numbering": [
      "read",
      "export"
@@ -1676,6 +1776,22 @@
      "read",
      "export"
     ],
+    "pm.country": [
+     "read",
+     "export"
+    ],
+    "pm.city": [
+     "read",
+     "export"
+    ],
+    "pm.paymentTerm": [
+     "read",
+     "export"
+    ],
+    "pm.taxType": [
+     "read",
+     "export"
+    ],
     "pm.numbering": [
      "read",
      "export"
@@ -1849,6 +1965,18 @@
     "pm.bank": [
      "read"
     ],
+    "pm.country": [
+     "read"
+    ],
+    "pm.city": [
+     "read"
+    ],
+    "pm.paymentTerm": [
+     "read"
+    ],
+    "pm.taxType": [
+     "read"
+    ],
     "pm.numbering": [
      "read"
     ],
@@ -1904,7 +2032,7 @@
   "ssoEnabled": false,
   "ssoIssuer": null,
   "ssoClientId": null,
-  "updatedAt": "2026-10-19T16:42:14.539Z",
+  "updatedAt": "2026-10-20T14:01:26.149Z",
   "updatedBy": "Administrator"
  }
 }
