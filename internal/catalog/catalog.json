@@ -1,0 +1,1910 @@
+{
+ "catalog": [
+  {
+   "id": "authentication",
+   "name": "Autentikasi",
+   "menus": [
+    {
+     "id": "auth.overview",
+     "name": "Ringkasan",
+     "description": "Kondisi akun dan akses sekilas",
+     "actions": [
+      "read"
+     ]
+    },
+    {
+     "id": "auth.users",
+     "name": "Pengguna",
+     "description": "Akun pengguna dan cakupannya",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "auth.roles",
+     "name": "Peran & Hak Akses",
+     "description": "Peran dan hak aksesnya",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete"
+     ]
+    },
+    {
+     "id": "auth.unitAccess",
+     "name": "Akses Modul Unit",
+     "description": "Modul per unit operasional",
+     "actions": [
+      "read",
+      "update"
+     ]
+    },
+    {
+     "id": "auth.sessions",
+     "name": "Sesi Aktif",
+     "description": "Sesi login yang berjalan",
+     "actions": [
+      "read",
+      "delete"
+     ]
+    },
+    {
+     "id": "auth.audit",
+     "name": "Log Aktivitas",
+     "description": "Riwayat login dan perubahan",
+     "actions": [
+      "read",
+      "export"
+     ]
+    },
+    {
+     "id": "auth.organization",
+     "name": "Struktur Organisasi",
+     "description": "Salinan dari Portal Master (sinkron)",
+     "actions": [
+      "read",
+      "update"
+     ]
+    },
+    {
+     "id": "auth.security",
+     "name": "Kebijakan Keamanan",
+     "description": "Password, sesi, dan SSO",
+     "actions": [
+      "read",
+      "update"
+     ]
+    },
+    {
+     "id": "auth.clients",
+     "name": "Aplikasi Terhubung",
+     "description": "Aplikasi yang login lewat modul ini",
+     "actions": [
+      "read",
+      "create",
+      "update"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "portal-master",
+   "name": "Portal Master",
+   "menus": [
+    {
+     "id": "pm.overview",
+     "name": "Peta Master",
+     "description": "Daftar master dan hubungannya",
+     "actions": [
+      "read"
+     ]
+    },
+    {
+     "id": "pm.orgChart",
+     "name": "Bagan Organisasi",
+     "description": "Struktur organisasi dan peta jabatan",
+     "actions": [
+      "read",
+      "export"
+     ]
+    },
+    {
+     "id": "pm.orgLevel",
+     "name": "Level Organisasi",
+     "description": "Group, Region, Wilayah, Perusahaan, Unit",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete"
+     ]
+    },
+    {
+     "id": "pm.unitType",
+     "name": "Jenis Unit Operasional",
+     "description": "Kebun, pabrik, plasma, gudang, kantor",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete"
+     ]
+    },
+    {
+     "id": "pm.orgUnit",
+     "name": "Unit Organisasi",
+     "description": "Pohon organisasi: semua unit dan induknya",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.grade",
+     "name": "Grade Jabatan",
+     "description": "Golongan dan urutan senioritas",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete"
+     ]
+    },
+    {
+     "id": "pm.jabatan",
+     "name": "Jabatan",
+     "description": "Nama jabatan, grade, dan jenisnya",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.position",
+     "name": "Posisi & Pejabat",
+     "description": "Jabatan per unit, atasan, pemegang, dan Plt",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.approvalRule",
+     "name": "Aturan Approval",
+     "description": "Jenis dokumen dan jangkauan approval berjenjang",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove"
+     ]
+    },
+    {
+     "id": "pm.delegation",
+     "name": "Delegasi Approval",
+     "description": "Pengalihan wewenang approval sementara",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own"
+     ]
+    },
+    {
+     "id": "pm.approvalFlow",
+     "name": "Approval Custom (Override)",
+     "description": "Jenjang khusus yang menggantikan default",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove"
+     ]
+    },
+    {
+     "id": "pm.employee",
+     "name": "Karyawan",
+     "description": "Induk karyawan: NIK, status, dan pendidikan",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.app",
+     "name": "Modul Aplikasi",
+     "description": "Aplikasi yang tampil di Beranda dan bisa diberi hak akses per peran.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.idp",
+     "name": "Penyedia Identitas",
+     "description": "Penyedia SSO (OIDC) yang boleh dipakai untuk login.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.network",
+     "name": "Jaringan Tepercaya",
+     "description": "Rentang IP kantor dan kebun; login dari luar rentang ini bisa diminta verifikasi tambahan.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.customer",
+     "name": "Customer",
+     "description": "Pelanggan jasa pengiriman, alamat penagihan, dan termin pembayaran.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.vendor",
+     "name": "Vendor",
+     "description": "Pemasok jasa: pelayaran, trucking, depo, dan agen.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.port",
+     "name": "Pelabuhan",
+     "description": "Pelabuhan muat dan bongkar dengan kode UN/LOCODE.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.charge",
+     "name": "Jenis Biaya",
+     "description": "Kode biaya di Job Sheet dan Invoice, dengan tarif dasarnya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.currency",
+     "name": "Mata Uang & Kurs",
+     "description": "Mata uang transaksi dan kurs tengah terhadap Rupiah.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "post",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.container",
+     "name": "Jenis Kontainer",
+     "description": "Ukuran dan tipe kontainer untuk pemesanan dan tarif.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.uom",
+     "name": "Satuan",
+     "description": "Satuan ukur bahan dan hasil produksi.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.materialCategory",
+     "name": "Kategori Material",
+     "description": "Pengelompokan bahan baku, bahan penolong, dan barang jadi.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.material",
+     "name": "Material",
+     "description": "Bahan dan produk dengan satuan, kategori, dan stok minimal.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.warehouse",
+     "name": "Gudang",
+     "description": "Gudang bahan dan hasil produksi di setiap unit.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.productionLine",
+     "name": "Lini Produksi",
+     "description": "Lini olah di pabrik dan kapasitas per jamnya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.machine",
+     "name": "Mesin",
+     "description": "Mesin per lini produksi, untuk jadwal perawatan dan downtime.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.salesArea",
+     "name": "Area Penjualan",
+     "description": "Wilayah penjualan distributor dan target bulanannya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.outlet",
+     "name": "Outlet",
+     "description": "Toko dan agen pembeli beserta area dan kelasnya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.product",
+     "name": "Produk Jual",
+     "description": "Produk yang dijual distributor dengan kemasan dan harga dasarnya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.fleet",
+     "name": "Armada",
+     "description": "Kendaraan pengiriman, kapasitas, dan area tugasnya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.leaveType",
+     "name": "Jenis Cuti",
+     "description": "Jenis cuti yang bisa diajukan karyawan dan kuotanya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.permitType",
+     "name": "Jenis Izin",
+     "description": "Izin tidak masuk atau meninggalkan kerja selain cuti.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.reimbursementType",
+     "name": "Jenis Reimbursement",
+     "description": "Klaim penggantian biaya dan plafon per tahun.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.holiday",
+     "name": "Hari Libur",
+     "description": "Libur nasional dan cuti bersama; tidak dihitung sebagai hari cuti.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.employmentStatus",
+     "name": "Status Kepegawaian",
+     "description": "Status hubungan kerja karyawan.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.education",
+     "name": "Jenjang Pendidikan",
+     "description": "Jenjang pendidikan terakhir karyawan.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.workShift",
+     "name": "Shift Kerja",
+     "description": "Jam kerja per shift untuk kehadiran dan lembur.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.bank",
+     "name": "Bank",
+     "description": "Bank tujuan transfer gaji dan klaim.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.numbering",
+     "name": "Format Penomoran Dokumen",
+     "description": "Pola nomor dokumen semua modul di satu tempat; nomor dibuat server saat dokumen disimpan.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "freight-forwarding",
+   "name": "Freight Forwarding",
+   "menus": [
+    {
+     "id": "ff.jobsheet",
+     "name": "Job Sheet",
+     "description": "Order pengiriman dan biayanya",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post",
+      "export"
+     ]
+    },
+    {
+     "id": "ff.bl",
+     "name": "Bill of Lading",
+     "description": "Dokumen muatan",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "ff.invoice",
+     "name": "Invoice",
+     "description": "Tagihan ke pelanggan",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post",
+      "export"
+     ]
+    },
+    {
+     "id": "ff.tracking",
+     "name": "Pelacakan Kargo",
+     "description": "Status kiriman",
+     "actions": [
+      "read",
+      "update",
+      "export"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "employee-self-service",
+   "name": "Employee Self Service",
+   "menus": [
+    {
+     "id": "ess.profile",
+     "name": "Profil Saya",
+     "description": "Data pribadi karyawan",
+     "actions": [
+      "read",
+      "update"
+     ]
+    },
+    {
+     "id": "ess.leave",
+     "name": "Pengajuan Cuti",
+     "description": "Cuti dan izin",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove"
+     ]
+    },
+    {
+     "id": "ess.claim",
+     "name": "Klaim Biaya",
+     "description": "Penggantian biaya",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post"
+     ]
+    },
+    {
+     "id": "ess.payslip",
+     "name": "Slip Gaji",
+     "description": "Slip gaji bulanan",
+     "actions": [
+      "read",
+      "export"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "employee-management",
+   "name": "Employee Management",
+   "menus": [
+    {
+     "id": "em.employee",
+     "name": "Data Karyawan",
+     "description": "Induk data karyawan",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "approve",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "em.structure",
+     "name": "Struktur Organisasi",
+     "description": "Jabatan dan atasan",
+     "actions": [
+      "read",
+      "update",
+      "export"
+     ]
+    },
+    {
+     "id": "em.mutation",
+     "name": "Mutasi & Promosi",
+     "description": "Perpindahan jabatan",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post"
+     ]
+    },
+    {
+     "id": "em.attendance",
+     "name": "Kehadiran",
+     "description": "Rekap absensi",
+     "actions": [
+      "read",
+      "approve",
+      "export",
+      "upload"
+     ]
+    }
+   ]
+  }
+ ],
+ "roles": [
+  {
+   "code": "admin",
+   "name": "Admin",
+   "description": "Semua menu, termasuk pengguna dan koneksi",
+   "grants": {
+    "auth.overview": [
+     "read"
+    ],
+    "auth.users": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "auth.roles": [
+     "read",
+     "create",
+     "update",
+     "delete"
+    ],
+    "auth.unitAccess": [
+     "read",
+     "update"
+    ],
+    "auth.sessions": [
+     "read",
+     "delete"
+    ],
+    "auth.audit": [
+     "read",
+     "export"
+    ],
+    "auth.organization": [
+     "read",
+     "update"
+    ],
+    "auth.security": [
+     "read",
+     "update"
+    ],
+    "auth.clients": [
+     "read",
+     "create",
+     "update"
+    ],
+    "pm.overview": [
+     "read"
+    ],
+    "pm.orgChart": [
+     "read",
+     "export"
+    ],
+    "pm.orgLevel": [
+     "read",
+     "create",
+     "update",
+     "delete"
+    ],
+    "pm.unitType": [
+     "read",
+     "create",
+     "update",
+     "delete"
+    ],
+    "pm.orgUnit": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.grade": [
+     "read",
+     "create",
+     "update",
+     "delete"
+    ],
+    "pm.jabatan": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.position": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.approvalRule": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove"
+    ],
+    "pm.delegation": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own"
+    ],
+    "pm.approvalFlow": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove"
+    ],
+    "pm.employee": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.app": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.idp": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.network": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.customer": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "export",
+     "upload"
+    ],
+    "pm.vendor": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "export",
+     "upload"
+    ],
+    "pm.port": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.charge": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.currency": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "post",
+     "export",
+     "upload"
+    ],
+    "pm.container": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.uom": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.materialCategory": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.material": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.warehouse": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.productionLine": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.machine": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.salesArea": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.outlet": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.product": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.fleet": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.leaveType": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.permitType": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.reimbursementType": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.holiday": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.employmentStatus": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.education": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.workShift": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.bank": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.numbering": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "ff.jobsheet": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.bl": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "export",
+     "upload"
+    ],
+    "ff.invoice": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.tracking": [
+     "read",
+     "update",
+     "export"
+    ],
+    "ess.profile": [
+     "read",
+     "update"
+    ],
+    "ess.leave": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove"
+    ],
+    "ess.claim": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post"
+    ],
+    "ess.payslip": [
+     "read",
+     "export"
+    ],
+    "em.employee": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "approve",
+     "export",
+     "upload"
+    ],
+    "em.structure": [
+     "read",
+     "update",
+     "export"
+    ],
+    "em.mutation": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post"
+    ],
+    "em.attendance": [
+     "read",
+     "approve",
+     "export",
+     "upload"
+    ]
+   }
+  },
+  {
+   "code": "analyst",
+   "name": "Analis",
+   "description": "Analisis, set data, laporan, templat",
+   "grants": {
+    "auth.overview": [
+     "read"
+    ],
+    "auth.users": [
+     "read",
+     "export"
+    ],
+    "auth.audit": [
+     "read",
+     "export"
+    ],
+    "pm.overview": [
+     "read"
+    ],
+    "pm.orgChart": [
+     "read",
+     "export"
+    ],
+    "pm.orgLevel": [
+     "read"
+    ],
+    "pm.unitType": [
+     "read"
+    ],
+    "pm.orgUnit": [
+     "read",
+     "export"
+    ],
+    "pm.grade": [
+     "read"
+    ],
+    "pm.jabatan": [
+     "read",
+     "export"
+    ],
+    "pm.position": [
+     "read",
+     "export"
+    ],
+    "pm.approvalRule": [
+     "read"
+    ],
+    "pm.delegation": [
+     "read"
+    ],
+    "pm.approvalFlow": [
+     "read"
+    ],
+    "pm.employee": [
+     "read",
+     "export"
+    ],
+    "pm.app": [
+     "read",
+     "export"
+    ],
+    "pm.idp": [
+     "read",
+     "export"
+    ],
+    "pm.network": [
+     "read",
+     "export"
+    ],
+    "pm.customer": [
+     "read",
+     "export"
+    ],
+    "pm.vendor": [
+     "read",
+     "export"
+    ],
+    "pm.port": [
+     "read",
+     "export"
+    ],
+    "pm.charge": [
+     "read",
+     "export"
+    ],
+    "pm.currency": [
+     "read",
+     "export"
+    ],
+    "pm.container": [
+     "read",
+     "export"
+    ],
+    "pm.uom": [
+     "read",
+     "export"
+    ],
+    "pm.materialCategory": [
+     "read",
+     "export"
+    ],
+    "pm.material": [
+     "read",
+     "export"
+    ],
+    "pm.warehouse": [
+     "read",
+     "export"
+    ],
+    "pm.productionLine": [
+     "read",
+     "export"
+    ],
+    "pm.machine": [
+     "read",
+     "export"
+    ],
+    "pm.salesArea": [
+     "read",
+     "export"
+    ],
+    "pm.outlet": [
+     "read",
+     "export"
+    ],
+    "pm.product": [
+     "read",
+     "export"
+    ],
+    "pm.fleet": [
+     "read",
+     "export"
+    ],
+    "pm.leaveType": [
+     "read",
+     "export"
+    ],
+    "pm.permitType": [
+     "read",
+     "export"
+    ],
+    "pm.reimbursementType": [
+     "read",
+     "export"
+    ],
+    "pm.holiday": [
+     "read",
+     "export"
+    ],
+    "pm.employmentStatus": [
+     "read",
+     "export"
+    ],
+    "pm.education": [
+     "read",
+     "export"
+    ],
+    "pm.workShift": [
+     "read",
+     "export"
+    ],
+    "pm.bank": [
+     "read",
+     "export"
+    ],
+    "pm.numbering": [
+     "read",
+     "export"
+    ],
+    "ff.jobsheet": [
+     "read",
+     "create",
+     "update",
+     "own",
+     "submit",
+     "export"
+    ],
+    "ff.bl": [
+     "read",
+     "create",
+     "update",
+     "own",
+     "submit",
+     "export",
+     "upload"
+    ],
+    "ff.invoice": [
+     "read",
+     "export"
+    ],
+    "ff.tracking": [
+     "read",
+     "update",
+     "export"
+    ],
+    "ess.profile": [
+     "read",
+     "update"
+    ],
+    "ess.leave": [
+     "read",
+     "create",
+     "update",
+     "submit"
+    ],
+    "ess.claim": [
+     "read",
+     "create",
+     "update",
+     "submit"
+    ],
+    "ess.payslip": [
+     "read",
+     "export"
+    ],
+    "em.employee": [
+     "read",
+     "export"
+    ],
+    "em.structure": [
+     "read",
+     "export"
+    ],
+    "em.mutation": [
+     "read"
+    ],
+    "em.attendance": [
+     "read",
+     "export"
+    ]
+   }
+  },
+  {
+   "code": "publisher",
+   "name": "Penerbit",
+   "description": "Menyetujui dan menayangkan halaman Publikasi",
+   "grants": {
+    "pm.overview": [
+     "read"
+    ],
+    "pm.orgChart": [
+     "read",
+     "export"
+    ],
+    "pm.orgLevel": [
+     "read"
+    ],
+    "pm.unitType": [
+     "read"
+    ],
+    "pm.orgUnit": [
+     "read",
+     "export"
+    ],
+    "pm.grade": [
+     "read"
+    ],
+    "pm.jabatan": [
+     "read",
+     "export"
+    ],
+    "pm.position": [
+     "read",
+     "export"
+    ],
+    "pm.approvalRule": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove"
+    ],
+    "pm.delegation": [
+     "read"
+    ],
+    "pm.approvalFlow": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove"
+    ],
+    "pm.employee": [
+     "read",
+     "export"
+    ],
+    "pm.app": [
+     "read",
+     "export"
+    ],
+    "pm.idp": [
+     "read",
+     "export"
+    ],
+    "pm.network": [
+     "read",
+     "export"
+    ],
+    "pm.customer": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "export"
+    ],
+    "pm.vendor": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "export"
+    ],
+    "pm.port": [
+     "read",
+     "export"
+    ],
+    "pm.charge": [
+     "read",
+     "export"
+    ],
+    "pm.currency": [
+     "read",
+     "export"
+    ],
+    "pm.container": [
+     "read",
+     "export"
+    ],
+    "pm.uom": [
+     "read",
+     "export"
+    ],
+    "pm.materialCategory": [
+     "read",
+     "export"
+    ],
+    "pm.material": [
+     "read",
+     "export"
+    ],
+    "pm.warehouse": [
+     "read",
+     "export"
+    ],
+    "pm.productionLine": [
+     "read",
+     "export"
+    ],
+    "pm.machine": [
+     "read",
+     "export"
+    ],
+    "pm.salesArea": [
+     "read",
+     "export"
+    ],
+    "pm.outlet": [
+     "read",
+     "export"
+    ],
+    "pm.product": [
+     "read",
+     "export"
+    ],
+    "pm.fleet": [
+     "read",
+     "export"
+    ],
+    "pm.leaveType": [
+     "read",
+     "export"
+    ],
+    "pm.permitType": [
+     "read",
+     "export"
+    ],
+    "pm.reimbursementType": [
+     "read",
+     "export"
+    ],
+    "pm.holiday": [
+     "read",
+     "export"
+    ],
+    "pm.employmentStatus": [
+     "read",
+     "export"
+    ],
+    "pm.education": [
+     "read",
+     "export"
+    ],
+    "pm.workShift": [
+     "read",
+     "export"
+    ],
+    "pm.bank": [
+     "read",
+     "export"
+    ],
+    "pm.numbering": [
+     "read",
+     "export"
+    ],
+    "ff.jobsheet": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.bl": [
+     "read",
+     "approve",
+     "reject",
+     "export"
+    ],
+    "ff.invoice": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.tracking": [
+     "read",
+     "export"
+    ],
+    "ess.profile": [
+     "read",
+     "update"
+    ],
+    "ess.leave": [
+     "read",
+     "create",
+     "update",
+     "submit"
+    ],
+    "ess.claim": [
+     "read",
+     "create",
+     "update",
+     "submit"
+    ],
+    "ess.payslip": [
+     "read"
+    ]
+   }
+  },
+  {
+   "code": "viewer",
+   "name": "Pembaca",
+   "description": "Melihat dasbor dan analisis",
+   "grants": {
+    "pm.overview": [
+     "read"
+    ],
+    "pm.orgChart": [
+     "read"
+    ],
+    "pm.orgLevel": [
+     "read"
+    ],
+    "pm.unitType": [
+     "read"
+    ],
+    "pm.orgUnit": [
+     "read"
+    ],
+    "pm.grade": [
+     "read"
+    ],
+    "pm.jabatan": [
+     "read"
+    ],
+    "pm.position": [
+     "read"
+    ],
+    "pm.approvalRule": [
+     "read"
+    ],
+    "pm.delegation": [
+     "read"
+    ],
+    "pm.approvalFlow": [
+     "read"
+    ],
+    "pm.employee": [
+     "read"
+    ],
+    "pm.app": [
+     "read"
+    ],
+    "pm.idp": [
+     "read"
+    ],
+    "pm.network": [
+     "read"
+    ],
+    "pm.customer": [
+     "read"
+    ],
+    "pm.vendor": [
+     "read"
+    ],
+    "pm.port": [
+     "read"
+    ],
+    "pm.charge": [
+     "read"
+    ],
+    "pm.currency": [
+     "read"
+    ],
+    "pm.container": [
+     "read"
+    ],
+    "pm.uom": [
+     "read"
+    ],
+    "pm.materialCategory": [
+     "read"
+    ],
+    "pm.material": [
+     "read"
+    ],
+    "pm.warehouse": [
+     "read"
+    ],
+    "pm.productionLine": [
+     "read"
+    ],
+    "pm.machine": [
+     "read"
+    ],
+    "pm.salesArea": [
+     "read"
+    ],
+    "pm.outlet": [
+     "read"
+    ],
+    "pm.product": [
+     "read"
+    ],
+    "pm.fleet": [
+     "read"
+    ],
+    "pm.leaveType": [
+     "read"
+    ],
+    "pm.permitType": [
+     "read"
+    ],
+    "pm.reimbursementType": [
+     "read"
+    ],
+    "pm.holiday": [
+     "read"
+    ],
+    "pm.employmentStatus": [
+     "read"
+    ],
+    "pm.education": [
+     "read"
+    ],
+    "pm.workShift": [
+     "read"
+    ],
+    "pm.bank": [
+     "read"
+    ],
+    "pm.numbering": [
+     "read"
+    ],
+    "ff.jobsheet": [
+     "read"
+    ],
+    "ff.bl": [
+     "read"
+    ],
+    "ff.invoice": [
+     "read"
+    ],
+    "ff.tracking": [
+     "read"
+    ],
+    "ess.profile": [
+     "read",
+     "update"
+    ],
+    "ess.leave": [
+     "read",
+     "create",
+     "update",
+     "own",
+     "submit"
+    ],
+    "ess.claim": [
+     "read",
+     "create",
+     "update",
+     "own",
+     "submit"
+    ],
+    "ess.payslip": [
+     "read"
+    ]
+   }
+  }
+ ],
+ "policy": {
+  "passwordMinLength": 8,
+  "requireUppercase": false,
+  "requireNumber": true,
+  "requireSymbol": false,
+  "passwordExpiryDays": 0,
+  "passwordHistory": 0,
+  "maxFailedAttempts": 5,
+  "lockoutMinutes": 15,
+  "sessionHours": 8,
+  "idleMinutes": 0,
+  "allowConcurrentSessions": true,
+  "allowLocalLogin": true,
+  "ssoEnabled": false,
+  "ssoIssuer": null,
+  "ssoClientId": null,
+  "updatedAt": "2026-10-19T16:42:14.539Z",
+  "updatedBy": "Administrator"
+ }
+}
