@@ -118,12 +118,50 @@ func Queue(ctx context.Context, db *database.DB, kind string, identityID, tenant
 // backoff is the wait after attempt n (1-based); after the last one the message is failed.
 var backoff = []time.Duration{time.Minute, 5 * time.Minute, 15 * time.Minute, time.Hour, 3 * time.Hour}
 
-// Worker sends due messages every Every; Sender nil means no SMTP yet: messages wait in the outbox.
+// Worker sends due messages every Every; Sender nil means no SMTP yet: messages wait in the outbox. Allow, when set,
+// is the only addresses mail may go to (development and tests: never mail a stranger); others are held, not sent.
 type Worker struct {
 	DB     *database.DB
 	Sender Sender
 	Every  time.Duration
+	Allow  func(to string) bool
 }
+
+// AllowList is the allow rule of SMTP_ALLOW_ONLY: exact addresses ("a@b.co") and whole domains ("@b.co"); nil
+// (every address) when the list is empty.
+func AllowList(entries []string) func(string) bool {
+	var exact, domains []string
+	for _, e := range entries {
+		e = strings.ToLower(strings.TrimSpace(e))
+		switch {
+		case e == "":
+		case strings.HasPrefix(e, "@"):
+			domains = append(domains, e)
+		default:
+			exact = append(exact, e)
+		}
+	}
+	if len(exact) == 0 && len(domains) == 0 {
+		return nil
+	}
+	return func(to string) bool {
+		to = strings.ToLower(strings.TrimSpace(to))
+		for _, x := range exact {
+			if to == x {
+				return true
+			}
+		}
+		for _, d := range domains {
+			if strings.HasSuffix(to, d) {
+				return true
+			}
+		}
+		return false
+	}
+}
+
+// Held is the error of a message to an address outside the allow list.
+const Held = "Ditahan: alamat di luar SMTP_ALLOW_ONLY, tidak dikirim."
 
 func (w Worker) Run(ctx context.Context) {
 	if w.Sender == nil {
@@ -170,12 +208,17 @@ func (w Worker) one(ctx context.Context) (bool, error) {
 			return nil // nothing due (or busy elsewhere)
 		}
 		claimed = true
+		if w.Allow != nil && !w.Allow(to) {
+			slog.Warn("mail held: address outside SMTP_ALLOW_ONLY", "to", Mask(to))
+			_, err = w.DB.Q(ctx).Exec(ctx, `UPDATE auth.mail_outbox SET status = 'failed', last_error = $2 WHERE id = $1`, id, Held)
+			return err
+		}
 		sendErr := w.Sender.Send(ctx, Message{To: to, Subject: subject, Body: body})
 		if sendErr == nil {
 			_, err = w.DB.Q(ctx).Exec(ctx, `UPDATE auth.mail_outbox SET status = 'sent', attempts = attempts + 1, sent_at = now(), last_error = NULL WHERE id = $1`, id)
 			return err
 		}
-		slog.Warn("mail not sent", "to", to, "attempt", attempts+1, "err", sendErr)
+		slog.Warn("mail not sent", "to", Mask(to), "attempt", attempts+1, "err", sendErr)
 		if attempts+1 > len(backoff) {
 			_, err = w.DB.Q(ctx).Exec(ctx, `UPDATE auth.mail_outbox SET status = 'failed', attempts = attempts + 1, last_error = $2 WHERE id = $1`, id, truncate(sendErr.Error(), 500))
 			return err

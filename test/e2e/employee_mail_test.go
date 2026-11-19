@@ -294,6 +294,34 @@ func TestMail(t *testing.T) {
 		}
 	})
 
+	t.Run("EM06 with SMTP_ALLOW_ONLY, mail to any other address is held and never reaches the server", func(t *testing.T) {
+		_, _ = pool.Exec(context.Background(), `DELETE FROM auth.mail_outbox`)
+		ctx := context.Background()
+		for _, to := range []string{"boleh@diizinkan.test", "orang.asing@contoh.co.id"} {
+			if err := mail.Queue(ctx, svc.DB, "password_changed", nil, nil, mail.Message{To: to, Subject: "Uji", Body: "uji"}); err != nil {
+				t.Fatal(err)
+			}
+		}
+		smtp.mu.Lock()
+		before := len(smtp.msgs)
+		smtp.mu.Unlock()
+		limited := mail.Worker{DB: svc.DB, Sender: smtp.sender(), Every: time.Second, Allow: mail.AllowList([]string{"@diizinkan.test"})}
+		if _, err := limited.Once(ctx); err != nil {
+			t.Fatal(err)
+		}
+		smtp.mu.Lock()
+		sent := smtp.msgs[before:]
+		smtp.mu.Unlock()
+		if len(sent) != 1 || sent[0].to != "boleh@diizinkan.test" {
+			t.Errorf("sent %+v", sent)
+		}
+		var status, why string
+		_ = pool.QueryRow(ctx, `SELECT status, last_error FROM auth.mail_outbox WHERE to_address = 'orang.asing@contoh.co.id'`).Scan(&status, &why)
+		if status != "failed" || why != mail.Held {
+			t.Errorf("held mail: %s %s", status, why)
+		}
+	})
+
 	t.Run("EM05 two workers never send one message twice", func(t *testing.T) {
 		before := len(smtp.msgs)
 		for range 6 {

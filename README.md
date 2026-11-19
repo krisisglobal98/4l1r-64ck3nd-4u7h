@@ -95,6 +95,10 @@ SMTP_FROM="ALIR <no-reply@perusahaan.co.id>"
 SMTP_TLS=starttls                 # starttls (587) | tls (465) | none (local catcher only)
 APP_BASE_URL=https://alir.perusahaan.co.id   # links in mail
 ```
+**Never mail strangers from a test installation:** set `SMTP_ALLOW_ONLY` (comma-separated addresses `a@b.co` or
+domains `@b.co`); mail to any other address is held (`failed`, "Ditahan: …") and never handed to the server. Leave it
+empty in production only.
+
 For development, a local catcher: `docker run -d -p 1025:1025 -p 8025:8025 axllent/mailpit`, then `SMTP_HOST=localhost`,
 `SMTP_PORT=1025`, `SMTP_TLS=none`, and read the mail at http://localhost:8025. Mail queued before SMTP was set is
 sent once the service restarts with it.

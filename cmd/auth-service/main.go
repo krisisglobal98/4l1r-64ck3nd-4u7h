@@ -66,7 +66,11 @@ func run() error {
 	if cfg.SMTPHost != "" {
 		sender = mail.SMTP{Host: cfg.SMTPHost, Port: cfg.SMTPPort, Username: cfg.SMTPUsername, Password: cfg.SMTPPassword, From: cfg.SMTPFrom, TLS: cfg.SMTPTLS}
 	}
-	go mail.Worker{DB: db, Sender: sender, Every: 5 * time.Second}.Run(ctx)
+	allow := mail.AllowList(cfg.SMTPAllowOnly)
+	if allow != nil {
+		slog.Info("mail limited to SMTP_ALLOW_ONLY", "entries", len(cfg.SMTPAllowOnly))
+	}
+	go mail.Worker{DB: db, Sender: sender, Every: 5 * time.Second, Allow: allow}.Run(ctx)
 	// Housekeeping: unverified sign-ups after 7 days, old counters, codes and tokens.
 	go func() {
 		t := time.NewTicker(time.Hour)

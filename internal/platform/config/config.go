@@ -41,6 +41,8 @@ type Config struct {
 	TrustProxy bool
 	// SecretKey seals secrets kept in the database (TOTP, identity provider secrets): 32 bytes, base64.
 	SecretKey string
+	// SMTPAllowOnly, when not empty, is the only addresses ("a@b.co") and domains ("@b.co") mail may go to.
+	SMTPAllowOnly []string
 }
 
 func Load() (Config, error) {
@@ -70,6 +72,11 @@ func Load() (Config, error) {
 		CaptchaSiteKey:  os.Getenv("AUTH_CAPTCHA_SITE_KEY"),
 		TrustProxy:      get("AUTH_TRUST_PROXY", "false") == "true",
 		SecretKey:       os.Getenv("AUTH_SECRET_KEY"),
+	}
+	for _, x := range strings.Split(os.Getenv("SMTP_ALLOW_ONLY"), ",") {
+		if x = strings.TrimSpace(x); x != "" {
+			c.SMTPAllowOnly = append(c.SMTPAllowOnly, x)
+		}
 	}
 	if c.SecretKey == "" {
 		return c, fmt.Errorf("AUTH_SECRET_KEY is required (32 bytes, base64: openssl rand -base64 32)")
