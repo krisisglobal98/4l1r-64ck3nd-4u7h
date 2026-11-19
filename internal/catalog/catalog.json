@@ -281,19 +281,6 @@
      ]
     },
     {
-     "id": "pm.port",
-     "name": "Pelabuhan",
-     "description": "Pelabuhan muat dan bongkar dengan kode UN/LOCODE.",
-     "actions": [
-      "read",
-      "create",
-      "update",
-      "delete",
-      "export",
-      "upload"
-     ]
-    },
-    {
      "id": "pm.charge",
      "name": "Jenis Biaya",
      "description": "Kode biaya di Job Sheet dan Invoice, dengan tarif dasarnya.",
@@ -321,9 +308,35 @@
      ]
     },
     {
+     "id": "pm.incoterm",
+     "name": "Incoterms",
+     "description": "Syarat penyerahan barang (ICC): siapa membayar angkutan dan asuransi, siapa mengurus impor, dan di mana risiko beralih.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
      "id": "pm.container",
      "name": "Jenis Kontainer",
-     "description": "Ukuran dan tipe kontainer untuk pemesanan dan tarif.",
+     "description": "Ukuran dan tipe kontainer (ISO 6346) untuk pemesanan, job sheet, dan tarif.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.packaging",
+     "name": "Kemasan",
+     "description": "Jenis kemasan barang (karton, karung, drum, palet) dengan kode UN/ECE untuk dokumen pabean.",
      "actions": [
       "read",
       "create",
@@ -336,7 +349,20 @@
     {
      "id": "pm.uom",
      "name": "Satuan",
-     "description": "Satuan ukur bahan dan hasil produksi.",
+     "description": "Satuan ukur muatan, stok, dan tarif dengan kode UN/ECE dan faktor ke satuan dasar.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.commodity",
+     "name": "Komoditas",
+     "description": "Jenis muatan dengan kode HS, data barang berbahaya, serta satuan dan kemasan bawaannya.",
      "actions": [
       "read",
       "create",
@@ -615,6 +641,19 @@
      "id": "pm.city",
      "name": "Kota",
      "description": "Kota dan kabupaten per negara dan provinsi, untuk alamat mitra dan lokasi.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.port",
+     "name": "Pelabuhan & Lokasi",
+     "description": "Pelabuhan laut dan sungai, bandara, dry port, terminal kereta, dan pos lintas batas dengan UN/LOCODE.",
      "actions": [
       "read",
       "create",
@@ -1006,14 +1045,6 @@
      "export",
      "upload"
     ],
-    "pm.port": [
-     "read",
-     "create",
-     "update",
-     "delete",
-     "export",
-     "upload"
-    ],
     "pm.charge": [
      "read",
      "create",
@@ -1031,6 +1062,14 @@
      "export",
      "upload"
     ],
+    "pm.incoterm": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
     "pm.container": [
      "read",
      "create",
@@ -1039,7 +1078,23 @@
      "export",
      "upload"
     ],
+    "pm.packaging": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
     "pm.uom": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.commodity": [
      "read",
      "create",
      "update",
@@ -1213,6 +1268,14 @@
      "upload"
     ],
     "pm.city": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.port": [
      "read",
      "create",
      "update",
@@ -1421,10 +1484,6 @@
      "read",
      "export"
     ],
-    "pm.port": [
-     "read",
-     "export"
-    ],
     "pm.charge": [
      "read",
      "export"
@@ -1433,11 +1492,23 @@
      "read",
      "export"
     ],
+    "pm.incoterm": [
+     "read",
+     "export"
+    ],
     "pm.container": [
      "read",
      "export"
     ],
+    "pm.packaging": [
+     "read",
+     "export"
+    ],
     "pm.uom": [
+     "read",
+     "export"
+    ],
+    "pm.commodity": [
      "read",
      "export"
     ],
@@ -1522,6 +1593,10 @@
      "export"
     ],
     "pm.city": [
+     "read",
+     "export"
+    ],
+    "pm.port": [
      "read",
      "export"
     ],
@@ -1664,10 +1739,6 @@
      "read",
      "export"
     ],
-    "pm.port": [
-     "read",
-     "export"
-    ],
     "pm.charge": [
      "read",
      "export"
@@ -1676,11 +1747,23 @@
      "read",
      "export"
     ],
+    "pm.incoterm": [
+     "read",
+     "export"
+    ],
     "pm.container": [
      "read",
      "export"
     ],
+    "pm.packaging": [
+     "read",
+     "export"
+    ],
     "pm.uom": [
+     "read",
+     "export"
+    ],
+    "pm.commodity": [
      "read",
      "export"
     ],
@@ -1768,6 +1851,10 @@
      "export"
     ],
     "pm.city": [
+     "read",
+     "export"
+    ],
+    "pm.port": [
      "read",
      "export"
     ],
@@ -1880,19 +1967,25 @@
     "pm.network": [
      "read"
     ],
-    "pm.port": [
-     "read"
-    ],
     "pm.charge": [
      "read"
     ],
     "pm.currency": [
      "read"
     ],
+    "pm.incoterm": [
+     "read"
+    ],
     "pm.container": [
      "read"
     ],
+    "pm.packaging": [
+     "read"
+    ],
     "pm.uom": [
+     "read"
+    ],
+    "pm.commodity": [
      "read"
     ],
     "pm.materialCategory": [
@@ -1958,6 +2051,9 @@
     "pm.city": [
      "read"
     ],
+    "pm.port": [
+     "read"
+    ],
     "pm.paymentTerm": [
      "read"
     ],
@@ -2019,7 +2115,7 @@
   "ssoEnabled": false,
   "ssoIssuer": null,
   "ssoClientId": null,
-  "updatedAt": "2026-10-20T14:25:47.298Z",
+  "updatedAt": "2026-10-20T14:41:33.680Z",
   "updatedBy": "Administrator"
  }
 }
