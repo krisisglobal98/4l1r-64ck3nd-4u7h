@@ -24,6 +24,7 @@ import (
 	"github.com/jackc/pgx/v5"
 
 	"alir.local/auth-service/internal/platform/database"
+	"alir.local/auth-service/internal/secretbox"
 )
 
 // Audience of every access token.
@@ -63,24 +64,41 @@ func newKid() string {
 	return "k" + hex.EncodeToString(b)
 }
 
+// The private keys are stored sealed (secretbox, bound to their kid): whoever reads the database cannot sign tokens.
+// A key stored before sealing existed is sealed in place the first time it is read.
+const sealedPrefix = "v1:"
+
 // current is the newest live key of alg, made the first time.
-func current(ctx context.Context, db *database.DB, alg string, make func() ([]byte, error)) (string, []byte, error) {
+func current(ctx context.Context, db *database.DB, box *secretbox.Box, alg string, make func() ([]byte, error)) (string, []byte, error) {
 	var kid string
-	var priv []byte
-	err := db.Pool.QueryRow(ctx, `SELECT kid, private_key FROM auth.signing_key WHERE alg = $1 AND retired_at IS NULL ORDER BY created_at DESC LIMIT 1`, alg).Scan(&kid, &priv)
+	var stored []byte
+	err := db.Pool.QueryRow(ctx, `SELECT kid, private_key FROM auth.signing_key WHERE alg = $1 AND retired_at IS NULL ORDER BY created_at DESC LIMIT 1`, alg).Scan(&kid, &stored)
 	if errors.Is(err, pgx.ErrNoRows) {
-		if priv, err = make(); err != nil {
+		priv, err := make()
+		if err != nil {
 			return "", nil, err
 		}
 		kid = newKid()
-		_, err = db.Pool.Exec(ctx, `INSERT INTO auth.signing_key (kid, private_key, alg) VALUES ($1, $2, $3)`, kid, priv, alg)
+		_, err = db.Pool.Exec(ctx, `INSERT INTO auth.signing_key (kid, private_key, alg) VALUES ($1, $2, $3)`, kid, []byte(box.Seal(priv, "signing-key:"+kid)), alg)
+		return kid, priv, err
 	}
-	return kid, priv, err
+	if err != nil {
+		return "", nil, err
+	}
+	if strings.HasPrefix(string(stored), sealedPrefix) {
+		priv, err := box.Open(string(stored), "signing-key:"+kid)
+		if err != nil {
+			return "", nil, fmt.Errorf("signing key %s cannot be opened with AUTH_SECRET_KEY: %w", kid, err)
+		}
+		return kid, priv, nil
+	}
+	_, err = db.Pool.Exec(ctx, `UPDATE auth.signing_key SET private_key = $2 WHERE kid = $1`, kid, []byte(box.Seal(stored, "signing-key:"+kid)))
+	return kid, stored, err
 }
 
-// Load reads the current signing keys, making them the first time.
-func Load(ctx context.Context, db *database.DB) (*Keys, error) {
-	kid, priv, err := current(ctx, db, "EdDSA", func() ([]byte, error) {
+// Load reads the current signing keys (opened with box), making them the first time.
+func Load(ctx context.Context, db *database.DB, box *secretbox.Box) (*Keys, error) {
+	kid, priv, err := current(ctx, db, box, "EdDSA", func() ([]byte, error) {
 		_, key, err := ed25519.GenerateKey(rand.Reader)
 		return key, err
 	})
@@ -90,7 +108,7 @@ func Load(ctx context.Context, db *database.DB) (*Keys, error) {
 	if len(priv) != ed25519.PrivateKeySize {
 		return nil, fmt.Errorf("signing key %s: bad size", kid)
 	}
-	rkid, rder, err := current(ctx, db, "RS256", func() ([]byte, error) {
+	rkid, rder, err := current(ctx, db, box, "RS256", func() ([]byte, error) {
 		key, err := rsa.GenerateKey(rand.Reader, 2048)
 		if err != nil {
 			return nil, err

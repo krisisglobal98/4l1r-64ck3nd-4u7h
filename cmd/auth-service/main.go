@@ -46,15 +46,15 @@ func run() error {
 		return err
 	}
 	defer db.Pool.Close()
-	keys, err := token.Load(ctx, db)
-	if err != nil {
-		return err
-	}
-	auth.TrustForwarded(cfg.TrustProxy)
 	box, err := secretbox.New(cfg.SecretKey)
 	if err != nil {
 		return err
 	}
+	keys, err := token.Load(ctx, db, box)
+	if err != nil {
+		return err
+	}
+	auth.TrustForwarded(cfg.TrustProxy)
 	svc := &auth.Service{DB: db, Keys: keys, Cfg: cfg, Codes: codeprefix.Postgres{DB: db}, Captcha: auth.NewCaptcha(cfg.CaptchaProvider, cfg.CaptchaSecret), Box: box,
 		RP:  &oidcrp.Client{HTTP: &http.Client{Timeout: 10 * time.Second}},
 		Org: &auth.Org{PMURL: cfg.PMURL, Keys: keys, Issuer: cfg.Issuer, Client: &http.Client{Timeout: 10 * time.Second}}}

@@ -136,7 +136,11 @@ func TestMain(m *testing.M) {
 	}
 	pool = db.Pool
 	reset()
-	keys, err := token.Load(ctx, db)
+	box, err := secretbox.New(testSecretKey)
+	if err != nil {
+		panic(err)
+	}
+	keys, err := token.Load(ctx, db, box)
 	if err != nil {
 		panic(err)
 	}
@@ -152,9 +156,7 @@ func TestMain(m *testing.M) {
 	server = httptest.NewServer(httpx.Chain(mux, reqid.Middleware, httpx.Recover, httpx.JSONErrors, svc.Authenticate))
 	svc.Cfg.PublicURL = server.URL
 	svc.RP = &oidcrp.Client{HTTP: http.DefaultClient}
-	if svc.Box, err = secretbox.New(testSecretKey); err != nil {
-		panic(err)
-	}
+	svc.Box = box
 	svc.Limits = &testLimits
 	code := m.Run()
 	server.Close()

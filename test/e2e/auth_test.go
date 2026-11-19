@@ -167,6 +167,10 @@ func TestSignIn(t *testing.T) {
 		if len(keys) != 2 || keys[0].(map[string]any)["crv"] != "Ed25519" || keys[1].(map[string]any)["kty"] != "RSA" {
 			t.Errorf("jwks %s", k.Raw)
 		}
+		var plain int
+		if err := pool.QueryRow(context.Background(), `SELECT count(*) FROM auth.signing_key WHERE substring(private_key FROM 1 FOR 3) <> 'v1:'::bytea`).Scan(&plain); err != nil || plain != 0 {
+			t.Errorf("%d signing keys stored unsealed", plain)
+		}
 		for _, x := range keys {
 			for _, private := range []string{"d", "p", "q", "dp", "dq", "qi"} {
 				if x.(map[string]any)[private] != nil {
