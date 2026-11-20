@@ -761,9 +761,24 @@
    "name": "Freight Forwarding",
    "menus": [
     {
-     "id": "ff.jobsheet",
-     "name": "Job Sheet",
-     "description": "Order pengiriman dan biayanya",
+     "id": "ff.operation",
+     "name": "Operation",
+     "description": "Job pengiriman: pihak, rute, jadwal, muatan, dokumen",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "ff.pricing",
+     "name": "Pricing",
+     "description": "Biaya beli (payable) per job",
      "actions": [
       "read",
       "create",
@@ -774,14 +789,14 @@
       "approve",
       "reject",
       "unapprove",
-      "post",
-      "export"
+      "export",
+      "upload"
      ]
     },
     {
-     "id": "ff.bl",
-     "name": "Bill of Lading",
-     "description": "Dokumen muatan",
+     "id": "ff.marketing",
+     "name": "Marketing",
+     "description": "Termin, Bill To, dan biaya jual (receivable) per job",
      "actions": [
       "read",
       "create",
@@ -791,6 +806,7 @@
       "submit",
       "approve",
       "reject",
+      "unapprove",
       "export",
       "upload"
      ]
@@ -810,16 +826,108 @@
       "reject",
       "unapprove",
       "post",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "ff.invoiceReimbursement",
+     "name": "Invoice Reimbursement",
+     "description": "Tagihan biaya talangan",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "ff.invoiceReceipt",
+     "name": "Invoice Receipt",
+     "description": "Tanda terima invoice",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
       "export"
      ]
     },
     {
-     "id": "ff.tracking",
-     "name": "Pelacakan Kargo",
-     "description": "Status kiriman",
+     "id": "ff.receivablePayment",
+     "name": "Receivables Payment",
+     "description": "Penerimaan pembayaran pelanggan",
      "actions": [
       "read",
+      "create",
       "update",
+      "delete",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post",
+      "export"
+     ]
+    },
+    {
+     "id": "ff.vendorBill",
+     "name": "Vendor Bill",
+     "description": "Tagihan dari vendor",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "own",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post",
+      "export"
+     ]
+    },
+    {
+     "id": "ff.payablePayment",
+     "name": "Payables Payment",
+     "description": "Pembayaran ke vendor",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "submit",
+      "approve",
+      "reject",
+      "unapprove",
+      "post",
+      "export"
+     ]
+    },
+    {
+     "id": "ff.jobsheet",
+     "name": "Job Sheet",
+     "description": "Laba rugi per job (khusus baca)",
+     "actions": [
+      "read",
+      "export"
+     ]
+    },
+    {
+     "id": "ff.report",
+     "name": "Laporan",
+     "description": "Laporan penjualan, invoice, profit, umur piutang dan utang",
+     "actions": [
+      "read",
       "export"
      ]
     }
@@ -1391,7 +1499,17 @@
      "export",
      "upload"
     ],
-    "ff.jobsheet": [
+    "ff.operation": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "export",
+     "upload"
+    ],
+    "ff.pricing": [
      "read",
      "create",
      "update",
@@ -1401,10 +1519,10 @@
      "approve",
      "reject",
      "unapprove",
-     "post",
-     "export"
+     "export",
+     "upload"
     ],
-    "ff.bl": [
+    "ff.marketing": [
      "read",
      "create",
      "update",
@@ -1413,6 +1531,7 @@
      "submit",
      "approve",
      "reject",
+     "unapprove",
      "export",
      "upload"
     ],
@@ -1427,11 +1546,73 @@
      "reject",
      "unapprove",
      "post",
+     "export",
+     "upload"
+    ],
+    "ff.invoiceReimbursement": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export",
+     "upload"
+    ],
+    "ff.invoiceReceipt": [
+     "read",
+     "create",
+     "update",
+     "delete",
      "export"
     ],
-    "ff.tracking": [
+    "ff.receivablePayment": [
      "read",
+     "create",
      "update",
+     "delete",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.vendorBill": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "own",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.payablePayment": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "submit",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.jobsheet": [
+     "read",
+     "export"
+    ],
+    "ff.report": [
+     "read",
      "export"
     ],
     "ess.profile": [
@@ -1712,15 +1893,7 @@
      "read",
      "export"
     ],
-    "ff.jobsheet": [
-     "read",
-     "create",
-     "update",
-     "own",
-     "submit",
-     "export"
-    ],
-    "ff.bl": [
+    "ff.operation": [
      "read",
      "create",
      "update",
@@ -1733,9 +1906,8 @@
      "read",
      "export"
     ],
-    "ff.tracking": [
+    "ff.jobsheet": [
      "read",
-     "update",
      "export"
     ],
     "ess.profile": [
@@ -1986,18 +2158,22 @@
      "read",
      "export"
     ],
-    "ff.jobsheet": [
+    "ff.operation": [
+     "read",
+     "export"
+    ],
+    "ff.pricing": [
      "read",
      "approve",
      "reject",
      "unapprove",
-     "post",
      "export"
     ],
-    "ff.bl": [
+    "ff.marketing": [
      "read",
      "approve",
      "reject",
+     "unapprove",
      "export"
     ],
     "ff.invoice": [
@@ -2008,7 +2184,47 @@
      "post",
      "export"
     ],
-    "ff.tracking": [
+    "ff.invoiceReimbursement": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.invoiceReceipt": [
+     "read",
+     "export"
+    ],
+    "ff.receivablePayment": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.vendorBill": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.payablePayment": [
+     "read",
+     "approve",
+     "reject",
+     "unapprove",
+     "post",
+     "export"
+    ],
+    "ff.jobsheet": [
+     "read",
+     "export"
+    ],
+    "ff.report": [
      "read",
      "export"
     ],
@@ -2191,16 +2407,37 @@
     "pm.numbering": [
      "read"
     ],
-    "ff.jobsheet": [
+    "ff.operation": [
      "read"
     ],
-    "ff.bl": [
+    "ff.pricing": [
+     "read"
+    ],
+    "ff.marketing": [
      "read"
     ],
     "ff.invoice": [
      "read"
     ],
-    "ff.tracking": [
+    "ff.invoiceReimbursement": [
+     "read"
+    ],
+    "ff.invoiceReceipt": [
+     "read"
+    ],
+    "ff.receivablePayment": [
+     "read"
+    ],
+    "ff.vendorBill": [
+     "read"
+    ],
+    "ff.payablePayment": [
+     "read"
+    ],
+    "ff.jobsheet": [
+     "read"
+    ],
+    "ff.report": [
      "read"
     ],
     "ess.profile": [
@@ -2243,7 +2480,7 @@
   "ssoEnabled": false,
   "ssoIssuer": null,
   "ssoClientId": null,
-  "updatedAt": "2026-10-20T14:52:36.657Z",
+  "updatedAt": "2026-10-21T03:03:06.172Z",
   "updatedBy": "Administrator"
  }
 }
