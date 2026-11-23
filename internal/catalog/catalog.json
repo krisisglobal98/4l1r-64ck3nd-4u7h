@@ -930,6 +930,17 @@
       "read",
       "export"
      ]
+    },
+    {
+     "id": "ff.parameter",
+     "name": "System Parameter",
+     "description": "Parameter modul Freight Forwarding, mis. jatuh tempo default invoice",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete"
+     ]
     }
    ]
   },
@@ -1677,6 +1688,12 @@
      "approve",
      "export",
      "upload"
+    ],
+    "ff.parameter": [
+     "read",
+     "create",
+     "update",
+     "delete"
     ]
    }
   },
@@ -2246,6 +2263,9 @@
     ],
     "ess.payslip": [
      "read"
+    ],
+    "ff.parameter": [
+     "read"
     ]
    }
   },
@@ -2459,6 +2479,9 @@
      "submit"
     ],
     "ess.payslip": [
+     "read"
+    ],
+    "ff.parameter": [
      "read"
     ]
    }
