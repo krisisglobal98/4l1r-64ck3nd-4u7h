@@ -753,6 +753,19 @@
       "export",
       "upload"
      ]
+    },
+    {
+     "id": "pm.systemParameter",
+     "name": "System Parameter",
+     "description": "Nilai pengaturan sistem per modul, mis. jatuh tempo default invoice Freight Forwarding.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
     }
    ]
   },
@@ -929,17 +942,6 @@
      "actions": [
       "read",
       "export"
-     ]
-    },
-    {
-     "id": "ff.parameter",
-     "name": "System Parameter",
-     "description": "Parameter modul Freight Forwarding, mis. jatuh tempo default invoice",
-     "actions": [
-      "read",
-      "create",
-      "update",
-      "delete"
      ]
     }
    ]
@@ -1689,11 +1691,13 @@
      "export",
      "upload"
     ],
-    "ff.parameter": [
+    "pm.systemParameter": [
      "read",
      "create",
      "update",
-     "delete"
+     "delete",
+     "export",
+     "upload"
     ]
    }
   },
@@ -1959,6 +1963,10 @@
      "read"
     ],
     "em.attendance": [
+     "read",
+     "export"
+    ],
+    "pm.systemParameter": [
      "read",
      "export"
     ]
@@ -2264,8 +2272,9 @@
     "ess.payslip": [
      "read"
     ],
-    "ff.parameter": [
-     "read"
+    "pm.systemParameter": [
+     "read",
+     "export"
     ]
    }
   },
@@ -2481,7 +2490,7 @@
     "ess.payslip": [
      "read"
     ],
-    "ff.parameter": [
+    "pm.systemParameter": [
      "read"
     ]
    }
