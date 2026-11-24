@@ -32,22 +32,25 @@ const Audience = "alir"
 
 // Claims of an access token. Grants are the effective access when the token was made (Admin: Full, no list).
 type Claims struct {
-	ID        string              `json:"jti,omitempty"` // unique per token
-	Issuer    string              `json:"iss"`
-	Audience  string              `json:"aud"`
-	Subject   string              `json:"sub"` // the person (identity id): the same in every tenant
-	SessionID string              `json:"sid"`
-	MemberID  string              `json:"mid,omitempty"` // the person's membership in the tenant
-	TenantID  string              `json:"tid"`           // the company the token acts in (Portal Master scopes every row by it)
-	IssuedAt  int64               `json:"iat"`
-	Expires   int64               `json:"exp"`
-	Username  string              `json:"username"`
-	Name      string              `json:"name"`
-	Role      string              `json:"role"`
-	Full      bool                `json:"full,omitempty"`
-	Grants    map[string][]string `json:"grants,omitempty"`
-	ClientID  string              `json:"client_id,omitempty"` // the application the token was issued to (OIDC)
-	Scope     string              `json:"scope,omitempty"`
+	ID        string `json:"jti,omitempty"` // unique per token
+	Issuer    string `json:"iss"`
+	Audience  string `json:"aud"`
+	Subject   string `json:"sub"` // the person (identity id): the same in every tenant
+	SessionID string `json:"sid"`
+	MemberID  string `json:"mid,omitempty"` // the person's membership in the tenant
+	TenantID  string `json:"tid"`           // the company the token acts in (Portal Master scopes every row by it)
+	IssuedAt  int64  `json:"iat"`
+	Expires   int64  `json:"exp"`
+	Username  string `json:"username"`
+	Name      string `json:"name"`
+	Role      string `json:"role"`
+	Full      bool   `json:"full,omitempty"`
+	// Platform: the person administers the installation; services let them change the data all companies share
+	// (Portal Master's global reference masters: countries, currencies, Incoterms).
+	Platform bool                `json:"pa,omitempty"`
+	Grants   map[string][]string `json:"grants,omitempty"`
+	ClientID string              `json:"client_id,omitempty"` // the application the token was issued to (OIDC)
+	Scope    string              `json:"scope,omitempty"`
 }
 
 // Keys are the signing keys: Ed25519 (access tokens, ID tokens on request) and RSA (ID tokens).

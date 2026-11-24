@@ -491,14 +491,14 @@ func (s *Service) issue(ctx context.Context, u *userRow, sid string, now time.Ti
 	exp := now.Add(s.Cfg.AccessTTL)
 	jti, _ := newSecret()
 	c := token.Claims{ID: jti[:16], Issuer: s.Cfg.Issuer, Audience: token.Audience, Subject: u.IdentityID, SessionID: sid, MemberID: u.ID, TenantID: u.TenantID,
-		IssuedAt: now.Unix(), Expires: exp.Unix(), Username: u.Username, Name: u.Name, Role: u.RoleCode, Full: acc.Full}
+		IssuedAt: now.Unix(), Expires: exp.Unix(), Username: u.Username, Name: u.Name, Role: u.RoleCode, Full: acc.Full, Platform: u.PlatformAdmin}
 	if !acc.Full {
 		c.Grants = acc.Grants
 	}
 	// Until the password is changed the session may do nothing else, in this service or any other: the token
 	// grants nothing (the answer still tells the page why).
 	if u.MustChange != nil || u.mustEnroll() {
-		c.Full, c.Grants = false, nil
+		c.Full, c.Grants, c.Platform = false, nil, false
 	}
 	tok, err := s.Keys.Sign(c)
 	if err != nil {
