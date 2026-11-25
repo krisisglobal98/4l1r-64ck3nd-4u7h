@@ -716,6 +716,19 @@
      ]
     },
     {
+     "id": "pm.building",
+     "name": "Gedung & Kantor",
+     "description": "Gedung atau kantor perusahaan di sebuah kota, dengan zona waktunya.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
      "id": "pm.paymentTerm",
      "name": "Syarat Pembayaran",
      "description": "Jatuh tempo tagihan: jumlah hari dari tanggal tertentu, uang muka, untuk customer atau vendor.",
@@ -771,6 +784,32 @@
      "id": "pm.systemParameter",
      "name": "System Parameter",
      "description": "Nilai pengaturan sistem per modul, mis. jatuh tempo default invoice Freight Forwarding.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.meetingRoom",
+     "name": "Ruang Rapat",
+     "description": "Ruang yang bisa dipesan: kapasitas, lantai, jam buka, fasilitas, dan persetujuan.",
+     "actions": [
+      "read",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "pm.roomAmenity",
+     "name": "Fasilitas Ruang",
+     "description": "Proyektor, layar, konferensi video, papan tulis, dan lainnya.",
      "actions": [
       "read",
       "create",
@@ -955,6 +994,37 @@
      "actions": [
       "read",
       "export"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "meeting-room",
+   "name": "Meeting Room",
+   "menus": [
+    {
+     "id": "mr.booking",
+     "name": "Booking Ruang",
+     "description": "Jadwal ruang rapat dan pemesanannya",
+     "actions": [
+      "read",
+      "own",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "upload"
+     ]
+    },
+    {
+     "id": "mr.approval",
+     "name": "Persetujuan Booking",
+     "description": "Menyetujui atau menolak booking ruang yang perlu persetujuan",
+     "actions": [
+      "read",
+      "approve",
+      "reject",
+      "upload"
      ]
     }
    ]
@@ -1719,6 +1789,45 @@
      "delete",
      "export",
      "upload"
+    ],
+    "pm.building": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.meetingRoom": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "pm.roomAmenity": [
+     "read",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "mr.booking": [
+     "read",
+     "own",
+     "create",
+     "update",
+     "delete",
+     "export",
+     "upload"
+    ],
+    "mr.approval": [
+     "read",
+     "approve",
+     "reject",
+     "upload"
     ]
    }
   },
@@ -1994,6 +2103,25 @@
     "pm.account": [
      "read",
      "export"
+    ],
+    "pm.building": [
+     "read",
+     "export"
+    ],
+    "pm.meetingRoom": [
+     "read",
+     "export"
+    ],
+    "pm.roomAmenity": [
+     "read",
+     "export"
+    ],
+    "mr.booking": [
+     "read",
+     "own",
+     "create",
+     "update",
+     "delete"
     ]
    }
   },
@@ -2304,6 +2432,30 @@
     "pm.account": [
      "read",
      "export"
+    ],
+    "pm.building": [
+     "read",
+     "export"
+    ],
+    "pm.meetingRoom": [
+     "read",
+     "export"
+    ],
+    "pm.roomAmenity": [
+     "read",
+     "export"
+    ],
+    "mr.booking": [
+     "read",
+     "own",
+     "create",
+     "update",
+     "delete"
+    ],
+    "mr.approval": [
+     "read",
+     "approve",
+     "reject"
     ]
    }
   },
@@ -2524,6 +2676,22 @@
     ],
     "pm.account": [
      "read"
+    ],
+    "pm.building": [
+     "read"
+    ],
+    "pm.meetingRoom": [
+     "read"
+    ],
+    "pm.roomAmenity": [
+     "read"
+    ],
+    "mr.booking": [
+     "read",
+     "own",
+     "create",
+     "update",
+     "delete"
     ]
    }
   }
